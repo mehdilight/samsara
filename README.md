@@ -25,7 +25,7 @@ import { Badge, Button, Field, Modal, Tooltip, TooltipProvider } from 'samsara';
 
 ## What's inside
 
-**Primitives:** `Button` (default/primary/danger/ghost, `sm`), `Badge` (neutral/green/red), `Field`, `ErrorNote` (renders any thrown value; shows a `hint` string property when present), `Modal` (Radix Dialog), `Tooltip` + `TooltipProvider` (Radix), `CellValue` (data-grid cell renderer).
+**Primitives:** `Button` (default/primary/danger/ghost, `sm`), `Badge` (neutral/green/red/amber/blue, optional status `dot`), `Switch`, `Segmented`, `Chip` (filter pill), `Card` + `CardHead`, `Field`, `ErrorNote` (renders any thrown value; shows a `hint` string property when present), `Modal` (Radix Dialog), `Tooltip` + `TooltipProvider` (Radix), `CellValue` (data-grid cell renderer).
 
 **App shell:** `Rail` + `RailItem`/`RailIcon`/`RailLabel`/`RailSeparator`/`RailSpacer` — an icon rail that expands over the content on hover, revealing labels. Router-agnostic via `asChild` (Radix Slot):
 
@@ -42,7 +42,7 @@ import { Badge, Button, Field, Modal, Tooltip, TooltipProvider } from 'samsara';
 </Rail>
 ```
 
-Plus `SectionPanel` (title + scrollable body), `Toolbar`, `FooterBar`, and `Drawer` (right-anchored detail panel; offset under your header with `--drawer-top`).
+Plus `SectionPanel` (title + scrollable body), `Toolbar`, `FooterBar`, and `Drawer` — right-anchored detail panel (offset under your header with `--drawer-top`), or pass `onClose` to get a modal slide-over with a blurred scrim (`--drawer-width`).
 
 **CSS classes** (`sam-` prefix) for markup you write yourself: `sam-input`, `sam-select`, `sam-textarea`, `sam-check` (custom checkbox), `sam-table` (+ `sam-table-wrap`), `sam-tabs`/`sam-tab`, `sam-panel`, `sam-card-dashed`, `sam-badge`, `sam-error`, `sam-empty`, `sam-label`, `sam-mono`, `sam-kbd`, `sam-copyrow`, `sam-section-panel/-title/-body`, `sam-group-label`, `sam-list-item`, `sam-toolbar`, `sam-footerbar`, `sam-content-area`, `sam-content-scroll`, `sam-grid-scroll`, `sam-page-title`, `sam-page-sub`.
 
@@ -58,7 +58,7 @@ Override the custom properties after the stylesheet import:
 }
 ```
 
-Token groups: surfaces (`--bg`, `--bg-surface`…`--bg-selection`), borders, text ramp (`--text`…`--text-faint`), `--brand*`, semantic `--success*`/`--danger*`/`--warning`, radii, font stacks, and shell layout (`--panel-header-h`, `--drawer-top`).
+Token groups: `--brand-contrast` (text rendered on the brand color — set it when your brand is light), surfaces (`--bg`, `--bg-surface`…`--bg-selection`), borders, text ramp (`--text`…`--text-faint`), `--brand*`, semantic `--success*`/`--danger*`/`--warning`, radii, font stacks, and shell layout (`--panel-header-h`, `--drawer-top`).
 
 ## License
 
