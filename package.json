@@ -1,0 +1,39 @@
+{
+    "name": "samsara",
+    "version": "0.1.0",
+    "description": "Samsara — dark, token-driven React UI primitives and an app shell (expanding icon rail, panels, drawers) with Radix accessibility underneath. Theme everything through CSS custom properties.",
+    "license": "MIT",
+    "author": "El Mehdi El Fatihi (mehdilight)",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mehdilight/samsara.git"
+    },
+    "keywords": [
+        "react",
+        "design-system",
+        "ui",
+        "components",
+        "dark-theme",
+        "radix"
+    ],
+    "type": "module",
+    "exports": {
+        ".": "./src/index.ts",
+        "./styles.css": "./src/styles.css"
+    },
+    "files": [
+        "src"
+    ],
+    "sideEffects": [
+        "*.css"
+    ],
+    "peerDependencies": {
+        "@radix-ui/react-dialog": "^1.0.0",
+        "@radix-ui/react-tooltip": "^1.0.0",
+        "react": ">=18",
+        "react-dom": ">=18"
+    },
+    "dependencies": {
+        "@radix-ui/react-slot": "^1.3.0"
+    }
+}

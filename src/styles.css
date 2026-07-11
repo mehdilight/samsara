@@ -1,0 +1,927 @@
+/* Samsara design system — dark, token-driven. Laravel-red primaries on
+   warm neutral surfaces (layout system inspired by Supabase Studio).
+   Theme by overriding the :root custom properties in your own stylesheet. */
+:root {
+    --bg-deep: oklch(0.145 0.003 30); /* header + icon rail */
+    --bg: oklch(0.17 0.004 30);
+    --bg-surface: oklch(0.19 0.004 30);
+    --bg-surface-2: oklch(0.215 0.004 30);
+    --bg-surface-3: oklch(0.24 0.004 30);
+    --bg-hover: oklch(0.225 0.004 30);
+    --bg-selection: oklch(0.265 0.004 30);
+
+    --border: oklch(0.27 0.004 30);
+    --border-strong: oklch(0.33 0.004 30);
+
+    --text: oklch(0.95 0.004 30);
+    --text-secondary: oklch(0.79 0.004 30);
+    --text-muted: oklch(0.66 0.004 30);
+    --text-faint: oklch(0.54 0.004 30);
+
+    /* Laravel brand red (#FF2D20) */
+    --brand: hsl(4 100% 56%);
+    --brand-hover: hsl(4 86% 49%);
+    --brand-tint: hsl(4 100% 56% / 0.12);
+    --brand-deep: hsl(4 72% 30%);
+
+    /* Semantic success — status badges only, not actions */
+    --success: hsl(153.1 60.2% 52.7%);
+    --success-tint: hsl(153.1 60.2% 52.7% / 0.12);
+
+    --danger: hsl(10.2 77.9% 60%);
+    --danger-tint: hsl(10.2 77.9% 53.9% / 0.12);
+    --warning: hsl(38.9 100% 42.9%);
+
+    --radius: 8px;
+    --radius-sm: 6px;
+
+    /* Shell layout tokens */
+    --panel-header-h: 52px;
+    --drawer-top: 48px;
+
+    --font-sans: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+}
+
+
+.sam-label {
+    display: block;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+}
+
+
+.sam-mono {
+    font-family: var(--font-mono);
+    font-size: 12px;
+}
+
+
+/* ── Controls ───────────────────────────────────────────────────────── */
+
+.sam-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 30px;
+    padding: 0 12px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-strong);
+    background: var(--bg-surface-3);
+    color: var(--text);
+    font-size: 12px;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.1s, border-color 0.1s;
+}
+
+
+.sam-btn:hover {
+    background: var(--bg-selection);
+    border-color: #4a4a4a;
+}
+
+
+.sam-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+/* Laravel-style primary: solid red fill, white text */
+.sam-btn.primary {
+    background: var(--brand);
+    border-color: var(--brand);
+    color: #fff;
+}
+
+
+.sam-btn.primary:hover {
+    background: var(--brand-hover);
+    border-color: var(--brand-hover);
+}
+
+
+.sam-btn.danger {
+    background: transparent;
+    border-color: var(--border-strong);
+    color: var(--danger);
+}
+
+
+.sam-btn.danger:hover {
+    background: var(--danger-tint);
+    border-color: var(--danger);
+}
+
+
+.sam-btn.ghost {
+    background: transparent;
+    border-color: transparent;
+    color: var(--text-secondary);
+}
+
+
+.sam-btn.ghost:hover {
+    background: var(--bg-hover);
+    color: var(--text);
+}
+
+
+.sam-btn.sm {
+    height: 26px;
+    padding: 0 9px;
+    font-size: 12px;
+}
+
+
+.sam-btn.block {
+    width: 100%;
+    justify-content: flex-start;
+}
+
+
+.sam-input,
+.sam-select,
+.sam-textarea {
+    width: 100%;
+    height: 32px;
+    padding: 0 10px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-strong);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 13px;
+    font-family: var(--font-sans);
+    outline: none;
+    transition: border-color 0.1s, box-shadow 0.1s;
+}
+
+
+.sam-input::placeholder {
+    color: var(--text-faint);
+}
+
+
+.sam-input:focus,
+.sam-select:focus,
+.sam-textarea:focus {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 2px var(--brand-tint);
+}
+
+
+.sam-input.sm,
+.sam-select.sm {
+    height: 28px;
+    font-size: 12px;
+}
+
+
+.sam-textarea {
+    height: auto;
+    padding: 10px;
+    resize: vertical;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    line-height: 1.65;
+}
+
+
+.sam-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23898989' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 28px;
+}
+
+
+/* Custom checkbox: native control replaced entirely, checkmark drawn in CSS
+   (inline SVG background) so it matches the panel tokens in every browser. */
+input[type='checkbox'].sam-check {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    margin: 0;
+    border: 1px solid var(--border-strong);
+    border-radius: 4px;
+    background: var(--bg);
+    cursor: pointer;
+    display: inline-grid;
+    place-items: center;
+    transition: background 0.12s, border-color 0.12s;
+}
+
+
+input[type='checkbox'].sam-check:hover {
+    border-color: #4a4a4a;
+}
+
+
+input[type='checkbox'].sam-check:focus-visible {
+    outline: none;
+    border-color: var(--brand);
+    box-shadow: 0 0 0 2px var(--brand-tint);
+}
+
+
+input[type='checkbox'].sam-check:checked {
+    background-color: var(--brand);
+    border-color: var(--brand);
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10' fill='none'%3E%3Cpath d='M1.5 5l3 3L10.5 1.5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 9px 8px;
+}
+
+
+input[type='checkbox'].sam-check:checked:hover {
+    background-color: var(--brand-hover);
+    border-color: var(--brand-hover);
+}
+
+
+/* ── Tabs (Data / Definition, Results) ──────────────────────────────── */
+
+.sam-tabs {
+    display: flex;
+    gap: 2px;
+}
+
+
+.sam-tab {
+    height: 30px;
+    padding: 0 12px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 12.5px;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    border-bottom: 2px solid transparent;
+}
+
+
+.sam-tab:hover {
+    color: var(--text);
+}
+
+
+.sam-tab.active {
+    color: var(--text);
+    border-bottom-color: var(--brand);
+}
+
+
+/* ── Tables (data grid) ─────────────────────────────────────────────── */
+
+.sam-table-wrap {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: auto;
+    background: var(--bg-surface);
+}
+
+
+table.sam-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+
+.sam-table th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: var(--bg-surface-2);
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 500;
+    text-align: left;
+    padding: 0 12px;
+    height: 34px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+}
+
+
+.sam-table th .type {
+    color: var(--text-faint);
+    font-size: 10px;
+    margin-left: 6px;
+    font-family: var(--font-mono);
+}
+
+
+.sam-table td {
+    padding: 0 12px;
+    height: 36px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+    white-space: nowrap;
+    max-width: 320px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: var(--font-mono);
+    font-size: 12px;
+}
+
+
+.sam-table td.sans {
+    font-family: var(--font-sans);
+    font-size: 13px;
+}
+
+
+.sam-table tbody tr:hover td {
+    background: var(--bg-hover);
+}
+
+
+.sam-table tbody tr.selected td {
+    background: var(--brand-tint);
+}
+
+
+.sam-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+.sam-table td.null {
+    color: var(--text-faint);
+    font-style: italic;
+}
+
+
+.sam-table .check-col {
+    width: 36px;
+}
+
+
+/* ── Panels, badges, misc ───────────────────────────────────────────── */
+
+.sam-panel {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+}
+
+
+.sam-card-dashed {
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius);
+    padding: 16px;
+    background: transparent;
+}
+
+
+.sam-badge {
+    display: inline-flex;
+    align-items: center;
+    height: 20px;
+    padding: 0 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 500;
+    background: var(--bg-surface-3);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-strong);
+    white-space: nowrap;
+}
+
+
+.sam-badge.green {
+    background: var(--success-tint);
+    color: var(--success);
+    border-color: hsl(153.1 60.2% 52.7% / 0.35);
+}
+
+
+.sam-badge.red {
+    background: var(--danger-tint);
+    color: var(--danger);
+    border-color: hsl(10.2 77.9% 53.9% / 0.35);
+}
+
+
+.sam-error {
+    background: var(--danger-tint);
+    border: 1px solid hsl(10.2 77.9% 53.9% / 0.4);
+    color: var(--danger);
+    border-radius: var(--radius);
+    padding: 10px 12px;
+    font-size: 12px;
+    margin-bottom: 12px;
+}
+
+
+.sam-error .hint {
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+
+.sam-empty {
+    color: var(--text-muted);
+    text-align: center;
+    padding: 48px 16px;
+    font-size: 13px;
+}
+
+
+.sam-empty .title {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+
+/* ── Modal ──────────────────────────────────────────────────────────── */
+
+.sam-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 50;
+}
+
+
+/* Radix Dialog.Content is a portal sibling of the overlay — center it itself. */
+.sam-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 51;
+    width: 480px;
+    max-width: calc(100vw - 32px);
+    max-height: 85vh;
+    overflow: auto;
+    background: var(--bg-surface-2);
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+    outline: none;
+}
+
+
+.sam-modal-header {
+    margin: 0;
+}
+
+
+/* ── Tooltip (Radix) ────────────────────────────────────────────────── */
+
+.sam-tooltip {
+    background: var(--bg-surface-3);
+    border: 1px solid var(--border-strong);
+    color: var(--text);
+    font-size: 12px;
+    font-family: var(--font-sans);
+    padding: 4px 9px;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    z-index: 60;
+    user-select: none;
+}
+
+
+.sam-tooltip-arrow {
+    fill: var(--border-strong);
+}
+
+
+.sam-modal.wide {
+    width: 640px;
+}
+
+
+.sam-modal-header {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+.sam-modal-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+.sam-modal-footer {
+    padding: 12px 16px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+
+/* ── SQL editor ─────────────────────────────────────────────────────── */
+
+.sam-kbd {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 3px;
+    padding: 1px 5px;
+    color: inherit;
+}
+
+
+.sam-copyrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    padding: 6px 10px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+/* ── App shell: rail, section panel, toolbars, drawer ─────────────── */
+
+
+
+/* The rail collapses to icons and expands over the content on hover,
+   revealing labels — same interaction as Supabase Studio. The wrap keeps a
+   fixed 56px slot in the layout so nothing shifts. */
+.sam-rail-wrap {
+    width: 56px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 40;
+}
+
+
+
+.sam-rail {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 56px;
+    overflow: hidden;
+    background: var(--bg-deep);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    padding: 10px 8px;
+    gap: 4px;
+    transition: width 0.18s ease, box-shadow 0.18s ease;
+}
+
+
+
+/* :has(:focus-visible) instead of :focus-within so keyboard navigation
+   expands the rail but a mouse click doesn't leave it stuck open. */
+.sam-rail:hover,
+.sam-rail:has(:focus-visible) {
+    width: 212px;
+    box-shadow: 16px 0 40px rgba(0, 0, 0, 0.45);
+}
+
+
+
+.sam-rail-btn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+    flex-shrink: 0;
+    border-radius: var(--radius);
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    padding: 0;
+    transition: background 0.1s, color 0.1s;
+}
+
+
+
+.sam-rail-btn:hover {
+    background: var(--bg-hover);
+    color: var(--text);
+}
+
+
+
+.sam-rail-btn.active {
+    background: var(--bg-selection);
+    color: var(--text);
+}
+
+
+
+.sam-rail-icon {
+    width: 40px;
+    height: 38px;
+    flex: 0 0 40px;
+    display: grid;
+    place-items: center;
+}
+
+
+
+.sam-rail-btn svg {
+    width: 17px;
+    height: 17px;
+}
+
+
+
+.sam-rail-label {
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.14s ease, transform 0.14s ease;
+}
+
+
+
+.sam-rail:hover .sam-rail-label,
+.sam-rail:has(:focus-visible) .sam-rail-label {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+
+.sam-rail-sep {
+    height: 1px;
+    background: var(--border);
+    margin: 6px 4px;
+    flex-shrink: 0;
+}
+
+
+
+.sam-rail .sam-rail-spacer {
+    margin-top: auto;
+}
+
+
+
+/* ── Section panel (contextual sidebar per section) ─────────────────── */
+
+.sam-section-panel {
+    width: 256px;
+    flex-shrink: 0;
+    background: var(--bg-surface);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+
+
+.sam-section-title {
+    height: var(--panel-header-h);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    border-bottom: 1px solid var(--border);
+}
+
+
+
+.sam-section-body {
+    padding: 12px;
+    overflow-y: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+
+.sam-group-label {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    font-family: var(--font-mono);
+    padding: 10px 6px 2px;
+}
+
+
+
+.sam-list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 6px 10px;
+    border: none;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    text-align: left;
+    text-decoration: none;
+}
+
+
+
+.sam-list-item:hover {
+    background: var(--bg-hover);
+    color: var(--text);
+}
+
+
+
+.sam-list-item.active {
+    background: var(--bg-selection);
+    color: var(--text);
+}
+
+
+
+.sam-list-item .count {
+    font-size: 11px;
+    color: var(--text-faint);
+    font-family: var(--font-mono);
+}
+
+
+
+.sam-content-area {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+
+
+.sam-content-scroll {
+    flex: 1;
+    overflow: auto;
+    padding: 24px;
+}
+
+
+
+/* ── Type ───────────────────────────────────────────────────────────── */
+
+.sam-page-title {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0 0 4px;
+}
+
+
+
+.sam-page-sub {
+    color: var(--text-muted);
+    font-size: 13px;
+    margin: 0 0 20px;
+}
+
+
+
+/* ── Grid toolbar / footer ──────────────────────────────────────────── */
+
+.sam-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-surface);
+    flex-shrink: 0;
+    min-height: var(--panel-header-h);
+}
+
+
+
+.sam-toolbar .spacer {
+    flex: 1;
+}
+
+
+
+.sam-toolbar .title {
+    font-size: 13px;
+    font-weight: 600;
+    margin-right: 4px;
+}
+
+
+
+.sam-grid-scroll {
+    flex: 1;
+    overflow: auto;
+    min-height: 0;
+}
+
+
+
+.sam-grid-scroll table.sam-table {
+    border: none;
+}
+
+
+
+.sam-footerbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 12px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 12px;
+    background: var(--bg-surface);
+    flex-shrink: 0;
+}
+
+
+
+.sam-footerbar .spacer {
+    flex: 1;
+}
+
+
+
+/* ── Detail drawer (user panel etc.) ────────────────────────────────── */
+
+.sam-drawer {
+    position: fixed;
+    top: var(--drawer-top);
+    right: 0;
+    bottom: 0;
+    width: 400px;
+    max-width: calc(100vw - 72px);
+    background: var(--bg-surface-2);
+    border-left: 1px solid var(--border-strong);
+    box-shadow: -16px 0 40px rgba(0, 0, 0, 0.45);
+    z-index: 45;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.sam-drawer-header {
+    height: var(--panel-header-h);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 16px;
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+    font-size: 13px;
+}
+
+
+
+.sam-drawer-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+
+
+.sam-drawer-footer {
+    padding: 12px 16px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
