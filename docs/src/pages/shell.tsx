@@ -5,16 +5,18 @@ import {
     Drawer,
     FooterBar,
     Rail,
+    RailGroup,
     RailIcon,
     RailItem,
     RailLabel,
     RailSeparator,
     RailSpacer,
+    RailSubItem,
     SectionPanel,
     Toolbar,
 } from 'samsara';
 import { Example, PropsTable } from '../lib/blocks';
-import { AuthIcon, GearIcon, SqlIcon, TableIcon } from '../lib/icons';
+import { AuthIcon, DbIcon, GearIcon, SqlIcon, TableIcon } from '../lib/icons';
 import type { Page } from './types';
 
 /* ── Rail ───────────────────────────────────────────────────────────── */
@@ -77,6 +79,58 @@ function RailDemo() {
     );
 }
 
+const railGroupCode = `<RailGroup icon={<DbIcon />} label="Database" defaultOpen
+           active={route.startsWith('/database')}>
+    <RailSubItem active={route === '/database/tables'}
+                 onClick={() => go('/database/tables')}>Tables</RailSubItem>
+    <RailSubItem onClick={() => go('/database/functions')}>Functions</RailSubItem>
+    <RailSubItem asChild>          {/* router links work here too */}
+        <Link to="/database/roles">Roles</Link>
+    </RailSubItem>
+</RailGroup>`;
+
+function RailGroupDemo() {
+    const [route, setRoute] = useState('db:tables');
+
+    const sub = (id: string, label: string) => (
+        <RailSubItem active={route === id} onClick={() => setRoute(id)}>
+            {label}
+        </RailSubItem>
+    );
+
+    return (
+        <div style={{ display: 'flex', width: '100%', position: 'relative', overflow: 'hidden' }}>
+            <Rail aria-label="Demo sections with submenus">
+                <RailItem active={route === 'editor'} onClick={() => setRoute('editor')}>
+                    <RailIcon>
+                        <TableIcon />
+                    </RailIcon>
+                    <RailLabel>Table editor</RailLabel>
+                </RailItem>
+                <RailGroup icon={<DbIcon />} label="Database" defaultOpen active={route.startsWith('db:')}>
+                    {sub('db:tables', 'Tables')}
+                    {sub('db:functions', 'Functions')}
+                    {sub('db:extensions', 'Extensions')}
+                </RailGroup>
+                <RailGroup icon={<AuthIcon />} label="Authentication" active={route.startsWith('auth:')}>
+                    {sub('auth:users', 'Users')}
+                    {sub('auth:policies', 'Policies')}
+                </RailGroup>
+                <RailSpacer />
+                <RailItem active={route === 'settings'} onClick={() => setRoute('settings')}>
+                    <RailIcon>
+                        <GearIcon />
+                    </RailIcon>
+                    <RailLabel>Settings</RailLabel>
+                </RailItem>
+            </Rail>
+            <div style={{ flex: 1, display: 'grid', placeItems: 'center', color: 'var(--text-faint)', fontSize: 13 }}>
+                Hover the rail — Database starts open, Authentication closed.
+            </div>
+        </div>
+    );
+}
+
 export const rail: Page = {
     slug: 'rail',
     title: 'Rail',
@@ -105,12 +159,33 @@ export const rail: Page = {
                 button, right for actions like sign-out.
             </p>
 
+            <Example
+                title="Submenus"
+                note={
+                    <>
+                        <code>RailGroup</code> nests <code>RailSubItem</code>s under a toggleable row: collapsed, the
+                        rail shows just the group icon (still highlighted via <code>active</code> when a child route
+                        is current); expanded, a caret appears and the submenu slides open along a guide line.
+                        Sub-items take <code>asChild</code> just like RailItem.
+                    </>
+                }
+                code={railGroupCode}
+                frame
+                height={360}
+            >
+                <RailGroupDemo />
+            </Example>
+
             <PropsTable
                 rows={[
                     { name: 'RailItem active', type: 'boolean', def: 'false', desc: 'Selected styling for the current section.' },
                     { name: 'RailItem asChild', type: 'boolean', def: 'false', desc: 'Render your own element (e.g. a router Link) instead of a button.' },
                     { name: 'RailIcon / RailLabel', type: 'children', desc: 'Fixed 40px icon slot; label revealed on expansion.' },
                     { name: 'RailSeparator / RailSpacer', type: '—', desc: 'Hairline divider; spacer pushes what follows to the bottom.' },
+                    { name: 'RailGroup icon / label', type: 'ReactNode', desc: 'Icon shown while collapsed; label while expanded (required).' },
+                    { name: 'RailGroup active', type: 'boolean', def: 'false', desc: 'Highlight the group row, e.g. when a child is the active route.' },
+                    { name: 'RailGroup defaultOpen', type: 'boolean', def: 'false', desc: 'Start with the submenu open.' },
+                    { name: 'RailSubItem active / asChild', type: 'boolean', def: 'false', desc: 'Same contract as RailItem, styled as an indented submenu row.' },
                 ]}
             />
         </>

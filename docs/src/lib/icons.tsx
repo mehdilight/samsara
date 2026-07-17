@@ -43,6 +43,16 @@ export function GearIcon() {
     );
 }
 
+export function DbIcon() {
+    return (
+        <svg viewBox="0 0 24 24" {...strokeProps}>
+            <ellipse cx="12" cy="5.5" rx="8" ry="3" />
+            <path d="M4 5.5v13c0 1.66 3.58 3 8 3s8-1.34 8-3v-13" />
+            <path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3" />
+        </svg>
+    );
+}
+
 export function BookIcon() {
     return (
         <svg viewBox="0 0 24 24" {...strokeProps}>

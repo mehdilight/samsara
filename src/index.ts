@@ -12,7 +12,7 @@ export { Field } from './Field';
 export { Modal } from './Modal';
 export { Segmented } from './Segmented';
 export { Switch } from './Switch';
-export { Rail, RailIcon, RailItem, RailLabel, RailSeparator, RailSpacer } from './Rail';
+export { Rail, RailGroup, RailIcon, RailItem, RailLabel, RailSeparator, RailSpacer, RailSubItem } from './Rail';
 export { ToastProvider, useToast } from './Toast';
 export { Drawer, FooterBar, SectionPanel, Toolbar } from './Shell';
 export { Tooltip, TooltipProvider } from './Tooltip';

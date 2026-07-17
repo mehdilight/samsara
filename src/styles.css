@@ -813,6 +813,102 @@ table.sam-table {
 
 
 
+/* ── Rail submenus ── */
+
+/* Caret only appears once the rail is expanded, like the labels.
+   Spacing must be margin, not padding: the open state rotates this box,
+   and padding would swing the glyph off its vertical center. */
+.sam-rail-caret {
+    margin-left: auto;
+    margin-right: 9px;
+    display: grid;
+    place-items: center;
+    color: var(--text-faint);
+    opacity: 0;
+    transition: opacity 0.14s ease, transform 0.15s ease;
+}
+
+
+.sam-rail-btn .sam-rail-caret svg {
+    width: 12px;
+    height: 12px;
+}
+
+
+.sam-rail:hover .sam-rail-caret,
+.sam-rail:has(:focus-visible) .sam-rail-caret {
+    opacity: 1;
+}
+
+
+.sam-rail-group.open .sam-rail-caret {
+    transform: rotate(90deg);
+}
+
+
+/* Collapses to zero height (and out of the tab order via visibility)
+   whenever the group is closed or the rail itself is collapsed. */
+.sam-rail-sub {
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: grid-template-rows 0.18s ease, visibility 0s linear 0.18s;
+}
+
+
+.sam-rail:hover .sam-rail-group.open .sam-rail-sub,
+.sam-rail:has(:focus-visible) .sam-rail-group.open .sam-rail-sub {
+    grid-template-rows: 1fr;
+    visibility: visible;
+    transition: grid-template-rows 0.18s ease;
+}
+
+
+/* Guide line runs under the center of the 40px icon slot. */
+.sam-rail-sub-inner {
+    overflow: hidden;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin-left: 19px;
+    border-left: 1px solid var(--border);
+    padding: 3px 0 5px 7px;
+}
+
+
+.sam-rail-subitem {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    height: 27px;
+    padding: 0 9px;
+    border: none;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 12.5px;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    text-decoration: none;
+    text-align: left;
+    white-space: nowrap;
+    transition: background 0.1s, color 0.1s;
+}
+
+
+.sam-rail-subitem:hover {
+    background: var(--bg-hover);
+    color: var(--text);
+}
+
+
+.sam-rail-subitem.active {
+    background: var(--bg-selection);
+    color: var(--text);
+}
+
+
 .sam-rail-sep {
     height: 1px;
     background: var(--border);
