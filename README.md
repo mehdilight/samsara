@@ -5,10 +5,10 @@ Dark, token-driven React UI primitives and an app shell — red primaries on war
 ## Install
 
 ```bash
-npm install samsara @radix-ui/react-dialog @radix-ui/react-tooltip
+npm install samsara @radix-ui/react-dialog @radix-ui/react-tooltip @radix-ui/react-toast
 ```
 
-React ≥18 and the two Radix packages are peer dependencies. The package ships TypeScript source; your bundler must handle TS in dependencies — Vite does out of the box.
+React ≥18 and the three Radix packages are peer dependencies. The package ships TypeScript source; your bundler must handle TS in dependencies — Vite does out of the box.
 
 ## Use
 
@@ -25,7 +25,7 @@ import { Badge, Button, Field, Modal, Tooltip, TooltipProvider } from 'samsara';
 
 ## What's inside
 
-**Primitives:** `Button` (default/primary/danger/ghost, `sm`), `Badge` (neutral/green/red/amber/blue, optional status `dot`), `Switch`, `Segmented`, `Chip` (filter pill), `Card` + `CardHead`, `Field`, `ErrorNote` (renders any thrown value; shows a `hint` string property when present), `Modal` (Radix Dialog), `Tooltip` + `TooltipProvider` (Radix), `CellValue` (data-grid cell renderer).
+**Primitives:** `Button` (default/primary/danger/ghost, `sm`), `Badge` (neutral/green/red/amber/blue, optional status `dot`), `Switch`, `Segmented`, `Chip` (filter pill), `Card` + `CardHead`, `Field`, `ErrorNote` (renders any thrown value; shows a `hint` string property when present), `Modal` (Radix Dialog), `Tooltip` + `TooltipProvider` (Radix), `ToastProvider` + `useToast` (Radix Toast — imperative `toast('Saved', { kind: 'success' })`), `CellValue` (data-grid cell renderer).
 
 **App shell:** `Rail` + `RailItem`/`RailIcon`/`RailLabel`/`RailSeparator`/`RailSpacer` — an icon rail that expands over the content on hover, revealing labels. Router-agnostic via `asChild` (Radix Slot):
 

@@ -13,7 +13,7 @@ export default defineConfig({
         ],
         // ../src sits outside this package, so its bare imports must resolve
         // to the docs copy — and to a single React instance.
-        dedupe: ['react', 'react-dom', '@radix-ui/react-dialog', '@radix-ui/react-tooltip', '@radix-ui/react-slot'],
+        dedupe: ['react', 'react-dom', '@radix-ui/react-dialog', '@radix-ui/react-toast', '@radix-ui/react-tooltip', '@radix-ui/react-slot'],
     },
     server: {
         fs: { allow: ['..'] },

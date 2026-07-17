@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Badge, Button, Card, CardHead, CellValue, ErrorNote, Field, Modal, Tooltip } from 'samsara';
+import { Badge, Button, Card, CardHead, CellValue, ErrorNote, Field, Modal, Tooltip, useToast } from 'samsara';
 import { Example, PropsTable } from '../lib/blocks';
 import type { Page } from './types';
 
@@ -262,6 +262,66 @@ export const modal: Page = {
                     { name: 'footer', type: 'ReactNode', desc: 'Right-aligned footer actions (required).' },
                     { name: 'onClose', type: '() => void', desc: 'Called on Esc, overlay click, or programmatic close (required).' },
                     { name: 'wide', type: 'boolean', def: 'false', desc: '640px instead of 480px.' },
+                ]}
+            />
+        </>
+    ),
+};
+
+/* ── Toast ──────────────────────────────────────────────────────────── */
+
+const toastCode = `<ToastProvider>…</ToastProvider>      {/* once, at the app root */}
+
+// anywhere below it
+const toast = useToast();
+
+toast('Table saved');
+toast('Backup complete', { kind: 'success', description: '42 tables, 18 MB.' });
+toast('Migration failed', { kind: 'danger', duration: 8000 });`;
+
+function ToastDemo() {
+    const toast = useToast();
+
+    return (
+        <>
+            <Button onClick={() => toast('Table saved')}>Neutral</Button>
+            <Button onClick={() => toast('Backup complete', { kind: 'success', description: '42 tables, 18 MB.' })}>
+                Success
+            </Button>
+            <Button onClick={() => toast('Migration failed', { kind: 'danger', duration: 8000 })}>
+                Danger (8s)
+            </Button>
+        </>
+    );
+}
+
+export const toastPage: Page = {
+    slug: 'toast',
+    title: 'Toast',
+    sub: 'Imperative notifications on Radix Toast: aria-live announcement, pause on hover, swipe-to-dismiss and the F8 hotkey come from the primitive.',
+    body: (
+        <>
+            <Example
+                title="Fire and forget"
+                note={
+                    <>
+                        Wrap the app in <code>ToastProvider</code> once (these docs already do), then call the function
+                        returned by <code>useToast</code> from anywhere below it. Toasts stack bottom-right, auto-dismiss
+                        after 4s, and pause their timer while hovered or focused.
+                    </>
+                }
+                code={toastCode}
+            >
+                <ToastDemo />
+            </Example>
+
+            <PropsTable
+                title="toast(message, options)"
+                rows={[
+                    { name: 'message', type: 'string', desc: 'The toast title, announced via aria-live (required).' },
+                    { name: 'kind', type: "'success' | 'danger'", desc: 'Semantic dot color; omit for the neutral gray dot.' },
+                    { name: 'description', type: 'string', desc: 'Muted second line under the message.' },
+                    { name: 'duration', type: 'number', def: '4000', desc: 'Auto-dismiss delay in ms.' },
                 ]}
             />
         </>

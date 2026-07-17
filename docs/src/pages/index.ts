@@ -1,4 +1,4 @@
-import { card, cellValue, errorNote, field, modal, tooltip } from './content';
+import { card, cellValue, errorNote, field, modal, toastPage, tooltip } from './content';
 import { badge, button, chip, segmented, switchPage } from './controls';
 import { misc, tables } from './css';
 import { gettingStarted, theming } from './overview';
@@ -9,7 +9,7 @@ export type { Group, Page };
 
 export const groups: Group[] = [
     { label: 'Overview', pages: [gettingStarted, theming] },
-    { label: 'Primitives', pages: [button, badge, chip, switchPage, segmented, field, card, tooltip, modal, errorNote, cellValue] },
+    { label: 'Primitives', pages: [button, badge, chip, switchPage, segmented, field, card, tooltip, modal, toastPage, errorNote, cellValue] },
     { label: 'App shell', pages: [rail, panels, drawer] },
     { label: 'CSS classes', pages: [tables, misc] },
 ];

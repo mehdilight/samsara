@@ -26,10 +26,10 @@ export const gettingStarted: Page = {
         <>
             <h2 className="doc-h2">Install</h2>
             <p className="doc-note">
-                React ≥18 and the two Radix packages are peer dependencies. The package ships TypeScript source, so
+                React ≥18 and the three Radix packages are peer dependencies. The package ships TypeScript source, so
                 your bundler must handle TS in dependencies — Vite does out of the box.
             </p>
-            <CodeBlock standalone code="npm install samsara @radix-ui/react-dialog @radix-ui/react-tooltip" />
+            <CodeBlock standalone code="npm install samsara @radix-ui/react-dialog @radix-ui/react-tooltip @radix-ui/react-toast" />
 
             <Example
                 title="Use"
@@ -57,7 +57,7 @@ export const gettingStarted: Page = {
             <h2 className="doc-h2">What's inside</h2>
             <p className="doc-p">
                 <strong>Primitives</strong> — Button, Badge, Chip, Switch, Segmented, Card, Field, Tooltip, Modal,
-                ErrorNote, CellValue. <strong>App shell</strong> — an expanding icon Rail, SectionPanel, Toolbar,
+                Toast, ErrorNote, CellValue. <strong>App shell</strong> — an expanding icon Rail, SectionPanel, Toolbar,
                 FooterBar and a right-anchored Drawer. Plus plain <code>sam-*</code> CSS classes (inputs, tables, tabs,
                 …) for markup you write yourself. Browse the sidebar — every page shows a live preview with its source.
             </p>
