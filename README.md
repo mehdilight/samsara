@@ -60,6 +60,16 @@ Override the custom properties after the stylesheet import:
 
 Token groups: `--brand-contrast` (text rendered on the brand color — set it when your brand is light), surfaces (`--bg`, `--bg-surface`…`--bg-selection`), borders, text ramp (`--text`…`--text-faint`), `--brand*`, semantic `--success*`/`--danger*`/`--warning`, radii, font stacks, and shell layout (`--panel-header-h`, `--drawer-top`).
 
+## Docs
+
+A browsable component gallery — live previews, copyable snippets and props tables for every component — lives in `docs/` (and is itself built out of samsara):
+
+```bash
+cd docs && npm install && npm run dev
+```
+
+It imports the library straight from `src/`, so component edits hot-reload in the docs.
+
 ## License
 
 MIT

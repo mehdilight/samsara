@@ -1,0 +1,212 @@
+/* Docs chrome + example frames. Everything leans on the samsara tokens. */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+}
+
+.doc-app {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 48px on purpose: it matches the --drawer-top default, so the Drawer
+   demos slide in flush under this header. */
+.doc-header {
+    height: 48px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 16px;
+    background: var(--bg-deep);
+    border-bottom: 1px solid var(--border);
+}
+
+.doc-header .wordmark {
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: -0.01em;
+}
+
+.doc-header .spacer {
+    flex: 1;
+}
+
+.doc-header a {
+    color: var(--text-muted);
+    font-size: 12.5px;
+    text-decoration: none;
+}
+
+.doc-header a:hover {
+    color: var(--text);
+}
+
+.doc-main {
+    flex: 1;
+    display: flex;
+    min-height: 0;
+}
+
+.doc-page {
+    max-width: 780px;
+}
+
+.doc-h2 {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 26px 0 6px;
+}
+
+.doc-p,
+.doc-note {
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.65;
+    margin: 0 0 12px;
+    max-width: 70ch;
+}
+
+.doc-note {
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+.doc-p code,
+.doc-note code,
+.doc-page td.sans code {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    background: var(--bg-surface-3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1px 5px;
+    white-space: nowrap;
+}
+
+/* ── Example: preview frame + attached code block ───────────────────── */
+
+.doc-example {
+    margin-bottom: 10px;
+}
+
+.doc-preview {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    padding: 24px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.doc-preview.column {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+/* Shell demos render edge-to-edge inside the frame. */
+.doc-preview.frame {
+    padding: 0;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    background: var(--bg);
+}
+
+.doc-code {
+    position: relative;
+    background: var(--bg-deep);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 var(--radius) var(--radius);
+}
+
+.doc-code.standalone {
+    border-top: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 12px;
+}
+
+.doc-code pre {
+    margin: 0;
+    padding: 14px 16px;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1.75;
+    color: var(--text-secondary);
+}
+
+.doc-copy {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+}
+
+/* Token colors for the mini highlighter */
+.tok-c { color: var(--text-faint); font-style: italic; }
+.tok-s { color: hsl(153 32% 60%); }
+.tok-t { color: hsl(4 82% 72%); }
+.tok-k { color: hsl(258 50% 74%); }
+.tok-n { color: hsl(39 65% 62%); }
+
+/* ── Props table ────────────────────────────────────────────────────── */
+
+.doc-props {
+    margin: 12px 0 4px;
+}
+
+.doc-props td.sans {
+    white-space: normal;
+    max-width: none;
+}
+
+/* ── Theming swatches ───────────────────────────────────────────────── */
+
+.doc-swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin: 10px 0 6px;
+}
+
+.doc-swatch {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 10px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--text-secondary);
+}
+
+.doc-swatch .sw {
+    width: 22px;
+    height: 22px;
+    border-radius: 5px;
+    border: 1px solid var(--border-strong);
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    font-size: 11px;
+}
