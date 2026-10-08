@@ -1,36 +1,36 @@
-/* Samsara design system — dark, token-driven. Laravel-red primaries on
-   warm neutral surfaces (layout system inspired by Supabase Studio).
+/* Samsara design system — dark, token-driven. Supabase Studio palette:
+   brand green on cool green-tinted neutral surfaces (values from Supabase's dark theme).
    Theme by overriding the :root custom properties in your own stylesheet. */
 :root {
-    --bg-deep: oklch(0.145 0.003 30); /* header + icon rail */
-    --bg: oklch(0.17 0.004 30);
-    --bg-surface: oklch(0.19 0.004 30);
-    --bg-surface-2: oklch(0.215 0.004 30);
-    --bg-surface-3: oklch(0.24 0.004 30);
-    --bg-hover: oklch(0.225 0.004 30);
-    --bg-selection: oklch(0.265 0.004 30);
+    --bg-deep: oklch(0.165 0.0025 157.5); /* header + icon rail */
+    --bg: oklch(0.19 0.0025 157.5);
+    --bg-surface: oklch(0.215 0.0025 157.5);
+    --bg-surface-2: oklch(0.2275 0.0025 157.5);
+    --bg-surface-3: oklch(0.24 0.0025 157.5);
+    --bg-hover: oklch(0.2325 0.0025 157.5);
+    --bg-selection: oklch(0.265 0.0025 157.5);
 
-    --border: oklch(0.27 0.004 30);
-    --border-strong: oklch(0.33 0.004 30);
+    --border: oklch(0.95 0.0028 157.5 / 0.075);
+    --border-strong: oklch(0.95 0.0028 157.5 / 0.28);
 
-    --text: oklch(0.95 0.004 30);
-    --text-secondary: oklch(0.79 0.004 30);
-    --text-muted: oklch(0.66 0.004 30);
-    --text-faint: oklch(0.54 0.004 30);
+    --text: oklch(0.95 0.0028 157.5);
+    --text-secondary: oklch(0.798 0.0028 157.5);
+    --text-muted: oklch(0.684 0.0028 157.5);
+    --text-faint: oklch(0.532 0.0028 157.5);
 
-    /* Laravel brand red (#FF2D20) */
-    --brand: hsl(4 100% 56%);
+    /* Supabase brand green (#3ECF8E) */
+    --brand: oklch(0.7623 0.1545 159.3);
     /* Text/glyph color rendered ON the brand color (buttons, checkmarks). */
-    --brand-contrast: #fff;
-    --brand-hover: hsl(4 86% 49%);
-    --brand-tint: hsl(4 100% 56% / 0.12);
-    --brand-deep: hsl(4 72% 30%);
+    --brand-contrast: oklch(0.19 0.0023 157.5);
+    --brand-hover: oklch(0.8023 0.1545 159.3);
+    --brand-tint: oklch(0.7623 0.1545 159.3 / 0.12);
+    --brand-deep: hsl(154.9 100% 19.2%);
 
     /* Semantic success — status badges only, not actions */
-    --success: hsl(153.1 60.2% 52.7%);
-    --success-tint: hsl(153.1 60.2% 52.7% / 0.12);
+    --success: oklch(0.8391 0.1036 165.3);
+    --success-tint: oklch(0.7623 0.1545 159.3 / 0.12);
 
-    --danger: hsl(10.2 77.9% 60%);
+    --danger: oklch(0.6853 0.1722 32.7);
     --danger-tint: hsl(10.2 77.9% 53.9% / 0.12);
     --warning: hsl(38.9 100% 42.9%);
 
@@ -93,7 +93,7 @@
 }
 
 
-/* Laravel-style primary: solid red fill, white text */
+/* Primary: solid brand-green fill, dark contrast text */
 .sam-btn.primary {
     background: var(--brand);
     border-color: var(--brand);
@@ -236,7 +236,7 @@ input[type='checkbox'].sam-check:focus-visible {
 input[type='checkbox'].sam-check:checked {
     background-color: var(--brand);
     border-color: var(--brand);
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10' fill='none'%3E%3Cpath d='M1.5 5l3 3L10.5 1.5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10' fill='none'%3E%3Cpath d='M1.5 5l3 3L10.5 1.5' stroke='%231b1d1c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 9px 8px;
